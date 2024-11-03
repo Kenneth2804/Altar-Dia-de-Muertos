@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Altar</title>
+  <style type="text/css">
+    
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4a0e4e;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .altar-container {
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 3/4;
+            background-color: #fff3e0;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .altar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            height: 100%;
+            padding: 32px;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .papel-picado-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 96px;
+            background-image: url('papel3.png');
+            background-repeat: repeat-x;
+            background-size: auto 100%;
+            z-index: 2;
+        }
+
+
+        .papel-picado-left, .papel-picado-right {
+            position: absolute;
+            top: 0;
+            width: 64px;
+            height: 100%;
+            background-repeat: repeat-y;
+            background-size: 100% auto;
+            z-index: 2;
+        }
+
+        .catrina {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .catrina.left {
+            grid-row: span 2;
+            background-image: url('calavera1.png');
+            transform: scaleX(-1);
+        }
+
+        .catrina.right {
+            grid-row: span 2;
+            background-image: url('calavera2.png');
+        }
+
+        .candle {
+            background-image: url('veladora1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: flicker 1s infinite alternate;
+        }
+
+        .candle.main {
+            grid-row: span 2;
+            background-image: url('veladora2.png');
+        }
+
+        .calavera {
+            background-image: url('catrina.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: bounce 1s infinite alternate;
+        }
+
+        .photo-upload {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .photo-upload.main {
+            grid-row: span 2;
+        }
+
+        .photo-upload input[type="file"] {
+            display: none;
+        }
+
+        .photo-upload label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background-color: #ffe0b2;
+            border: 2px dashed #ffab40;
+            border-radius: 8px;
+        }
+
+        .photo-upload img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .offering {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .offering.pan-de-muerto {
+            background-image: url('pan1.png');
+            width: 120px;
+        }
+
+        .offering.fruit {
+            background-image: url('coca1.png');
+        }
+
+        .offering.incense {
+            background-image: url('taco1.png');
+            
+        }
+
+        .cempasuchil {
+            background-image: url('flor1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100px;
+            animation: sway 1s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(0.98); }
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        @keyframes sway {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+
+        @keyframes smoke {
+            0% { opacity: 0.5; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-10px) scale(1.5); }
+        }
+
+  </style>
+</head>
+<body>
+
+    <div class="altar-container">
+        <div class="papel-picado-top"></div>
+        <div class="papel-picado-left"></div>
+        <div class="papel-picado-right"></div>
+        <div class="altar-grid">
+
+        <div class="catrina left"></div>
+            <div class="candle main"></div>
+            <div class="catrina right"></div>
+
+            <div class="calavera"></div>
+            <div class="calavera"></div>
+            <div class="calavera"></div>
+
+            <div class="photo-upload left">
+                <label for="leftPhoto">
+                    <img src="/placeholder.svg?height=50&width=50" alt="Upload left photo">
+                </label>
+                <input type="file" id="leftPhoto" accept="image/*">
+            </div>
+            <div class="photo-upload main">
+                <label for="mainPhoto">
+                    <img src="/placeholder.svg?height=100&width=100" alt="Upload main photo">
+                </label>
+                <input type="file" id="mainPhoto" accept="image/*">
+            </div>
+
+            <div class="photo-upload right">
+                <label for="rightPhoto">
+                    <img src="/placeholder.svg?height=50&width=50" alt="Upload right photo">
+                </label>
+                <input type="file" id="rightPhoto" accept="image/*">
+            </div>
+
+            <div class="candle"></div>
+            <div class="offering pan-de-muerto"></div>
+           <div class="cempasuchil"></div>
+
+            <div class="offering fruit"></div>
+            <div class="offering incense"></div>
+            <div class="offering drink"></div>
+
+
+
+
+            <script type="text/javascript">
+
+function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = event.target.previousElementSibling.querySelector('img');
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        document.getElementById('leftPhoto').addEventListener('change', handlePhotoUpload);
+        document.getElementById('mainPhoto').addEventListener('change', handlePhotoUpload);
+        document.getElementById('rightPhoto').addEventListener('change', handlePhotoUpload);
+
+            </script>
+
+</body>
+</html>
